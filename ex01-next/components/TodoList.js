@@ -10,7 +10,7 @@ export function TodoList() {
   return (
     <>
       <h1>
-        {name}'s Todos for {formatDate(today)}
+        {name}&apos;s Todos for {formatDate(today)}
       </h1>
       <img src={photo} alt={name} className="photo" />
       <ul>
