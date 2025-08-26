@@ -1,10 +1,11 @@
 import { Avatar } from "./Avatar";
+import { Card } from "./Card";
 
 export function Profile(props) {
   return (
-    <div className="card">
+    <Card>
       <Avatar {...props} />
-    </div>
+    </Card>
   );
 }
 
