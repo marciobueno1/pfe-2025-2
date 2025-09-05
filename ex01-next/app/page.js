@@ -1,13 +1,24 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
 
-import { Avatar } from "@/components/Avatar";
+import { Contador } from "@/components/Contador";
+import { GeradorAleatorio } from "@/components/GeradorAleatorio";
 import { Profile } from "@/components/Profile";
 import { TodoList } from "@/components/TodoList";
+import { pessoas } from "@/data";
 
 export default function Home() {
   return (
     <section>
+      <GeradorAleatorio />
+      <Contador />
+      <Contador />
+      <hr />
+      <ol>
+        {pessoas.map((p) => (
+          <li key={p.id}>{p.id}</li>
+        ))}
+      </ol>
       <h1>Amazing scientists</h1>
       <div>
         <Profile
