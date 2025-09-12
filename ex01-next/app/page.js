@@ -6,12 +6,17 @@ import { GeradorAleatorio } from "@/components/GeradorAleatorio";
 import { Profile } from "@/components/Profile";
 import { TodoList } from "@/components/TodoList";
 import { pessoas } from "@/data";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <section>
+      <Link href="/form">Form</Link>
+      <br />
       <GeradorAleatorio />
+      <hr />
       <Contador />
+      <hr />
       <Contador />
       <hr />
       <ol>
