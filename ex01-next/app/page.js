@@ -11,6 +11,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <section>
+      <Link href="/tarefas">Tarefas</Link>
+      <hr />
       <Link href="/form">Form</Link>
       <br />
       <GeradorAleatorio />
