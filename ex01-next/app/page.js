@@ -1,21 +1,28 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
+"use client";
 
 import { Contador } from "@/components/Contador";
 import { GeradorAleatorio } from "@/components/GeradorAleatorio";
 import { Profile } from "@/components/Profile";
 import { TodoList } from "@/components/TodoList";
 import { pessoas } from "@/data";
+import { useStore } from "@/zustand";
 import Link from "next/link";
 
 export default function Home() {
+  const { count } = useStore();
   return (
     <section>
+      <Link href="/zustand">Zustand</Link>
+      <hr />
       <Link href="/tarefas">Tarefas</Link>
       <hr />
       <Link href="/form">Form</Link>
       <br />
       <GeradorAleatorio />
+      <hr />
+      <h1>Contador do Zustand: {count}</h1>
       <hr />
       <Contador />
       <hr />
