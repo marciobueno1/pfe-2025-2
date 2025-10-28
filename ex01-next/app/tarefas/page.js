@@ -1,6 +1,7 @@
 "use client";
 
-import { adicionarTarefa, getTarefas } from "@/back4app";
+import { adicionarTarefa, getTarefas, removerTarefa } from "@/back4app";
+import { Tarefa } from "@/components/Tarefa";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
@@ -19,6 +20,13 @@ export default function TarefasPage() {
       setDescricao("");
     },
   });
+  const removerMutation = useMutation({
+    mutationFn: removerTarefa,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["tarefas"] });
+    },
+  });
   const [descricao, setDescricao] = useState("");
 
   async function handleAdicionarTarefaClick() {
@@ -27,6 +35,10 @@ export default function TarefasPage() {
       return;
     }
     adicionarMutation.mutate(descricao);
+  }
+
+  async function handleDeleteTarefa(objectId) {
+    removerMutation.mutate(objectId);
   }
 
   return (
@@ -48,9 +60,11 @@ export default function TarefasPage() {
         {isPending
           ? "Carregando..."
           : data.map((t) => (
-              <li key={t.objectId}>
-                {t.descricao} - {`${t.concluida}`}
-              </li>
+              <Tarefa
+                key={t.objectId}
+                tarefa={t}
+                onDelete={() => handleDeleteTarefa(t.objectId)}
+              />
             ))}
       </ol>
     </>

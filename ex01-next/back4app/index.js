@@ -22,3 +22,8 @@ export async function adicionarTarefa(descricao) {
   });
   return response.data;
 }
+
+export async function removerTarefa(objectId) {
+  const response = await apiInstance.delete(`/classes/Tarefa/${objectId}`);
+  return response.data;
+}
