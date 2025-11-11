@@ -1,14 +1,15 @@
-export function Tarefa({ tarefa, onDelete }) {
+export function Tarefa({ tarefa, onDelete, onChange }) {
   return (
     <div
       style={{
         marginBottom: "10px",
-        backgroundColor: "#f0f0f0",
+        backgroundColor: tarefa.concluida ? "PaleGreen" : "LightSalmon",
         padding: "5px",
       }}
     >
       <li>
-        {tarefa.descricao} - {`${tarefa.concluida} `}
+        {tarefa.descricao}
+        <input type="checkbox" checked={tarefa.concluida} onChange={onChange} />
         <button onClick={onDelete}>X</button>
       </li>
     </div>

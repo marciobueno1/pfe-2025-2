@@ -27,3 +27,12 @@ export async function removerTarefa(objectId) {
   const response = await apiInstance.delete(`/classes/Tarefa/${objectId}`);
   return response.data;
 }
+
+export async function atualizarTarefa({ objectId, concluida }) {
+  console.log("objectId", objectId);
+  console.log("concluida", concluida);
+  const response = await apiInstance.put(`/classes/Tarefa/${objectId}`, {
+    concluida,
+  });
+  return response.data;
+}
